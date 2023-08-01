@@ -27,10 +27,33 @@
   </div>
 
 <script>
+  // 表單
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
   const items = [];
+  
+  function addItem (e) {
+    //only client side so we don't need to sent it to the back end
+    e.preventDefault();
+    console.log('hello');
+    // take the input's value
+    const itemName = document.querySelector('[name=item]');
+    const userText = itemName.value;
 
+    console.log(itemName);
+    console.log(userText);
+    // build a object-item that is connected with the userText
+    const userItem = {
+      text: userText,
+      done: false
+    }
+    // clear the value that user put in the input
+    addItems.reset();
+    // push item array
+    items.push(userItem);
+    console.log(items);
+  }
+  addItems.addEventListener('submit',addItem);
 </script>
 
 
